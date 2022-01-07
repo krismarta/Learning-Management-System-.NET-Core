@@ -1,0 +1,232 @@
+﻿@using X.PagedList.Mvc.Core; @*import this so we get our HTML Helper*@
+@using X.PagedList; @*import this so we can cast our list to IPagedList (only necessary because ViewBag is dynamic)*@
+
+@{
+    ViewData["Title"] = "Detail Course";
+
+}
+<main>
+    <!--page-title-area start-->
+    <section class="page-title-area d-flex align-items-end">
+        <div class="container">
+            <div class="row align-items-end">
+                <div class="col-lg-12">
+                    <div class="page-title-wrapper mb-50">
+                        <h1 class="page-title mb-25">Courses Details</h1>
+                        <div class="breadcrumb-list">
+                            <ul class="breadcrumb">
+                                <li><a href="/course">Home - All Courses - &nbsp;</a></li>
+                                <li><a href="#"> Courses Details</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--page-title-area end-->
+    <!--course-details-area start-->
+    <section class="course-details-area pb-120 pt-md-100 pb-md-70 pt-xs-100 pb-xs-70">
+        <div class="container">
+            <div class="row">
+                <div class="col-xxl-8 col-xl-7">
+                    <div class="courses-details-wrapper mb-30">
+                        <h2 class="courses-title mb-30"></h2>
+                        <h5></h5>
+                        @{
+                            var iPhotoUrl = "/client/img/course/" + ViewData["thumbnail"];
+                            <div class="course-details-img mb-30" id="thumbsnails" style='background-image: url("@iPhotoUrl");'>
+                                <div class="video-wrapper">
+
+                                    <div id="video-preview">
+                                        <video style="width:100%;height:auto;" id="videoarea" controls="controls" controlslist="nodownload noplaybackrate" poster="" src=""></video>
+                                    </div>
+
+                                </div>
+                            </div>
+                        }
+
+                        <div class="instructor-profile">
+                            <h3>@ViewData["tittle"]</h3>
+
+                            <p class="mb-25">@ViewData["description"]</p>
+                            <div class="star-icon mb-20">
+                                @{
+                                    int ratex = Convert.ToInt32(ViewData["rating"]);
+                                    var sisa = 5 - ratex;
+
+                                }
+
+                                @for (int ix = 0; ix < ratex; ix++)
+                                {
+                                    <i class="fas fa-star text-warning"></i>
+                                }
+                                @for (int ix = 0; ix < sisa; ix++)
+                                {
+                                    <i class="fas fa-star"></i>
+                                }
+
+                                <i>@ViewData["feedback"]</i>
+                            </div>
+                            @*<h5 class="total-stu pt-20"><span><img src="assets/img/icon/avatar-outline-badged-2.svg" alt=""> 36549+ Students</span> <span class="float-sm-end"><img src="assets/img/icon/course.svg" alt=""> 36549+ Students</span></h5>*@
+                        </div>
+                    </div>
+                    <h4 class="mb-20">Review Course</h4>
+                    <div class="comments-area">
+                        <ul class="latest-commmnet">
+
+
+                            @foreach (var item in ViewData["review_course"] as IEnumerable<OnlineCourseAPI.ViewModel.ReviewCourseVM>)
+                            {
+                                <li>
+                                    <div class="single-comments mb-10">
+                                        <div class="comments__text">
+                                            <h6 class="sub-title18 mb-10">
+                                                @item.user_name
+                                                <span class="float-end date-text">@item.date_review</span>
+                                            </h6>
+                                            <p>@item.review</p>
+                                            <div class="star-icon mt-10">
+                                                @{
+                                                    int ratexx = Convert.ToInt32(item.Rate);
+                                                    var sisax = 5 - ratexx;
+
+                                                }
+
+                                                @for (int ixx = 0; ixx < ratexx; ixx++)
+                                                {
+                                                    <i class="fas fa-star text-warning"></i>
+                                                }
+                                                @for (int ixx = 0; ixx < sisax; ixx++)
+                                                {
+                                                    <i class="fas fa-star"></i>
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+
+                            }
+                            @Html.PagedListPager((IPagedList)ViewData["review_course"], pagerev => Url.Action("Detail", "Course", new { id = ViewData["course_id"], pagerev = pagerev }),
+          new X.PagedList.Mvc.Common.PagedListRenderOptions
+          {
+
+              ContainerDivClasses = new[] { "navigation mt-20" },
+              LiElementClasses = new[] { "page-item" },
+              PageClasses = new[] { "page-link" }
+          })
+
+
+
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-xxl-4 col-xl-5">
+                    <div class="learn-area mb-10">
+                        <ul class="cart-list-tag d-sm-inline-flex align-items-end mb-30">
+                            <li>
+                                <div class="price-list">
+                                    <h2><b class="sub-title28" id="price-detail"><b><sup>Rp</sup>@ViewData["price"].ToString()</b> </b></h2>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="cart-btn ml-10">
+                                    @*//js*@
+                                </div>
+                        </ul>
+                        <div class="learn-box">
+
+                            <h5>@ViewData["totalsub_course"] Sub Course ( @ViewData["duration"] Minutes)</h5>
+                            <ul class="learn-list">
+                                <li>
+                                    @*//error*@
+                                    @*<div class="row">
+
+                        <a class="play-video float-" id="play-preview"><span class="fas fa-film fa-fw"></span> Preview Course</a>
+                        <span class="float-end mt-2 fas fa-pause fa-xs" id="pause-preview"> </span>
+                    </div>*@
+                                    <div class="row mb-0">
+                                        <div class="col-sm-1" style="cursor:pointer">
+                                            <span class="fas fa-lock-open fa-fw"></span>
+                                        </div>
+                                        <div class="col-sm-6" style="cursor:pointer">
+                                            <a class="play-video float-start" id="play-preview">1. Preview Course</a>
+                                        </div>
+                                        <div class="col-sm-5" style="cursor:pointer">
+                                            <span class="float-end mt-2 fas fa-pause fa-xs" id="pause-preview"></span>
+                                        </div>
+                                    </div>
+                                </li>
+                                @{
+                                    int i = 1;
+                                    foreach (var item in ViewData["sub_course"] as IEnumerable<OnlineCourseAPI.Model.SubCourse>)
+                                    {
+                                        <li>
+
+                                            <div class="row mb-0">
+                                                <div class="col-sm-1" style="cursor:pointer">
+                                                    <span class="fas fa-lock fa-fw"></span>
+                                                </div>
+                                                <div class="col-sm-7" style="cursor:pointer">
+                                                    <span class="play-video float-start">@(i = i + 1). @item.title</span>
+                                                </div>
+                                                <div class="col-sm-4" style="cursor:pointer">
+                                                    <span class="time float-end mt-2"> @item.duration Minutes</span>
+                                                </div>
+                                            </div>
+
+                                        </li>
+                                    }
+                                }
+
+                            </ul>
+                        </div>
+
+                        <div class="courses-ingredients">
+                            <h2 class="corses-title mb-30">Course Includes</h2>
+                            <p>the benefits of buying this course are</p>
+                            <ul class="courses-item mt-25">
+                                <li><img src="../client/img/icon/certificate-line.svg" alt=""> Certificate of completion</li>
+                                <li><img src="../client/img/icon/infinity.svg" alt=""> Full Lifetime Access</li>
+                                <li><img src="../client/img/icon/mobile.svg" alt=""> Access on mobile and TV or any devices</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
+        </div>
+    </section>
+    <!--course-details-area end-->
+
+</main>
+
+
+@section Scripts{
+
+    <script type="text/javascript"
+            src="https://app.sandbox.midtrans.com/snap/snap.js"
+            data-client-key="SB-Mid-client-ssIn_mmDb9FU-60X"></script>
+
+    <script type="text/javascript">
+        var is_Authentication = '@ViewData["is_Authentication"]';
+        var is_have = '@ViewData["is_have"]';
+
+        var Orderid = "Pay-" + Math.random().toString(16).slice(2);
+        var price = '@ViewData["price"].ToString()';
+        var email = '@ViewData["Email"]';
+        var courseID = '@ViewData["course_id"]';
+        var title = '@ViewData["tittle"]';
+        var name = '@ViewData["name_cus"]';
+        var phone = '@ViewData["phone_cus"]';
+        var id_user = '@ViewData["id_cus"]';
+        var thumbnail = '@ViewData["thumbnail"]';
+
+    </script>
+
+    <script src="~/js/detailcourse.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+}

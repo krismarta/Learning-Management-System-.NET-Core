@@ -1,0 +1,100 @@
+﻿@{
+    ViewData["Title"] = "Register";
+
+}
+
+<main>
+    <!--page-title-area start-->
+    @*<section class="page-title-area d-flex align-items-end" >
+            <div class="container">
+                <div class="row align-items-end">
+                    <div class="col-lg-12">
+                        <div class="page-title-wrapper mb-50">
+                            <h1 class="page-title mb-25">Login</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>*@
+    <!--page-title-area end-->
+    <!--contact-form-area start-->
+    <section class="contact-form-area pt-50 pb-50 pt-md-100 pt-xs-50 pb-md-70 pb-xs-70">
+        <div class="container">
+            <div class="row justify-content-center align-items-center">
+                <div class="col-lg-10">
+                    <div class="card bg-light mb-3">
+                        <div class="card-body">
+                            <h2 class="text-center">Register</h2>
+                            <p class="text-center mb-10">(Register new account)</p>
+                            <div class="row g-0">
+
+                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                    <img class="img-fluid" src="client/img/register/checklist.png" alt="">
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                    <div class="card-body">
+                                        <div class="contact-form-wrapper mb-20">
+                                            <form class="row gx-3 comments-form contact-form needs-validation" id="formregister" novalidate>
+
+                                                <div class="col-lg-12">
+                                                    <div class="form-group">
+                                                        @*<label for="inputemail">Email</label>*@
+                                                        <input type="email" class="form-control" id="inputemail" placeholder="Enter your email" required>
+
+                                                        <div class="invalid-feedback">
+                                                            Email is still empty / does not match the format
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="col-lg-12">
+                                                    <div class="form-group">
+                                                        @*<label for="inputpassword">Password</label>*@
+                                                        <input type="password" class="form-control" id="inputpassword" name="inputpassword" placeholder="Enter your password" required>
+
+                                                        <div class="invalid-feedback">
+                                                            Password is still empty / does not match the format
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                                <div class="col-lg-12 ">
+                                                    <div class="form-group">
+                                                        @*<label for="inputrepassword">Repeat Password</label>*@
+                                                        <input type="password" class="form-control" id="inputrepassword" name="inputrepassword" placeholder="Repeat your password" required>
+
+                                                        <div class="invalid-feedback">
+                                                            Repassword is still empty / does not match the format
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+                                            </form>
+
+                                            <div class="text-center">
+                                                <button id="btnsaveCustomer" class="theme_btn message_btn mt-10 align-self-center btn btn-block"><span class="fas fa-save">&nbsp;</span> Register Account</button>
+                                            </div>
+               
+
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--contact-form-area end-->
+
+</main>
+
+@section Scripts{
+    <script src="~/js/Register.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+}
+

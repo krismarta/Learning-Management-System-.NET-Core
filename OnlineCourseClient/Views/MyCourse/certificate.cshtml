@@ -1,0 +1,118 @@
+﻿@{
+    Layout = null;
+}
+<HTML>
+<HEAD>
+    <link rel="stylesheet" href="~/client/css/bootstrap.min.css">
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <STYLE TYPE='TEXT/CSS'>
+        .main {
+            MARGIN: AUTO;
+            PADDING: 10px;
+            COLOR: BLACK;
+            DISPLAY: TABLE;
+            FONT-FAMILY: GEORGIA, SERIF;
+            FONT-SIZE: 24PX;
+            TEXT-ALIGN: CENTER;
+        }
+
+        .CONTAINER {
+            BORDER: 20PX SOLID #ED948D;
+            WIDTH: 750PX;
+            HEIGHT: 563PX;
+            DISPLAY: TABLE-CELL;
+            VERTICAL-ALIGN: MIDDLE;
+        }
+
+        .LOGO {
+            COLOR: #ED948D;
+        }
+
+        .MARQUEE {
+            COLOR: #ED948D;
+            FONT-SIZE: 48PX;
+            MARGIN: 20PX;
+        }
+
+        .ASSIGNMENT {
+            MARGIN: 20PX;
+        }
+
+        .PERSON {
+            BORDER-BOTTOM: 2PX SOLID BLACK;
+            FONT-SIZE: 32PX;
+            FONT-STYLE: ITALIC;
+            MARGIN: 20PX AUTO;
+            WIDTH: 400PX;
+        }
+
+        .REASON {
+            MARGIN: 20PX;
+        }
+
+        .REASON1 {
+            FONT-SIZE: 16PX;
+        }
+    </STYLE>
+</HEAD>
+<BODY>
+    <button id="downloadcerti" class="btn btn-warning" style="margin-bottom:20px">
+        <span class="fas fa-download fa-fw"></span> Download Certificate of Participation
+    </button>
+    <div class="serti">
+        <div class="main" style="MARGIN:AUTO; DISPLAY:TABLE;">
+            <DIV CLASS="CONTAINER" style="BORDER: 20PX SOLID #ED948D; WIDTH: 750PX; HEIGHT: 563PX; DISPLAY: TABLE-CELL; VERTICAL-ALIGN: MIDDLE; TEXT-ALIGN: CENTER;">
+                <DIV CLASS="LOGO" style=" COLOR: #ED948D; TEXT-ALIGN: CENTER;">
+                    JOANTO COURSE
+                </DIV>
+
+                <DIV CLASS="MARQUEE" style="COLOR: #ED948D; FONT-SIZE: 48PX; MARGIN: 20PX; TEXT-ALIGN: CENTER;">
+                    CERTIFICATE OF PARTICIPANT
+                </DIV>
+
+                <DIV CLASS="ASSIGNMENT" style=" MARGIN: 20PX; TEXT-ALIGN: CENTER;">
+                    THIS CERTIFICATE IS PRESENTED TO
+                </DIV>
+
+                <DIV CLASS="PERSON" style=" BORDER-BOTTOM: 2PX SOLID BLACK; FONT-SIZE: 32PX; FONT-STYLE: ITALIC; MARGIN: 20PX AUTO; WIDTH: 400PX; TEXT-ALIGN: CENTER;">
+                    KRISTIANTO MARTA
+                </DIV>
+
+                <DIV CLASS="REASON" style=" MARGIN: 20PX; TEXT-ALIGN: CENTER;">
+                    BELAJAR MEMBUAT GAME DENGAN C#
+                </DIV>
+                <DIV CLASS="REASON1" style="FONT-SIZE: 16PX; TEXT-ALIGN: CENTER; ">
+                    01 JANUARI 2022
+                </DIV>
+            </DIV>
+        </div>
+    </div>
+    
+
+
+</BODY>
+
+</HTML>
+
+<script type="text/javascript">
+    $("#downloadcerti").click(function () {
+        var html = $(".serti").html().replace(/</g, "StrTag").replace(/>/g, "EndTag").replace(/#/g, "PAGER");
+        var obj = new Object();
+        obj.link = html;
+        console.log(obj);
+        $.ajax({
+            url: "/mycourse/ActionCertificate/",
+            type: "POST",
+            data: obj,
+            
+            success: function (response) {
+
+            },
+            error: function (response) {
+
+            }
+        });
+        //window.open('../myCourse/ActionCertificate?html=' + html ,'_blank');
+    });
+</script>

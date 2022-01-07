@@ -1,0 +1,312 @@
+﻿@{
+    ViewData["Title"] = "My Course Details";
+
+}
+@section Csscustom{
+    <link rel="stylesheet" type="text/css" href="~/client/css/detailmycourse.css">
+    <link rel="stylesheet" type="text/css" href="~/client/css/rating.css">
+}
+
+<main>
+    <!--page-title-area start-->
+    <section class="page-title-area d-flex align-items-end">
+        <div class="container">
+            <div class="row align-items-end">
+                <div class="col-lg-12">
+                    <div class="page-title-wrapper mb-50">
+                        <h1 class="page-title mb-25">MyCourses Detail</h1>
+                        <div class="breadcrumb-list">
+                            <ul class="breadcrumb">
+                                <li><a href="/Home">Home - My Courses - &nbsp;</a></li>
+                                <li><a href="#">My Courses Detail</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--page-title-area end-->
+    <!--course-details-area start-->
+    <section class="course-details-area pb-120 pt-md-100 pb-md-70 pt-xs-100 pb-xs-70">
+        <div class="container">
+            <div class="row">
+                <div class="col-xxl-8 col-xl-7">
+                    <div class="courses-details-wrapper mb-30">
+                        <h2 class="courses-title mb-20"></h2>
+                        <h5></h5>
+                        @{ var iPhotoUrl = "/client/img/course/" + ViewData["thumbnail"];}
+
+                        <div class="course-details-img" id="thumbsnails" style='background-image: url(@iPhotoUrl);'>
+                            @*var iVideoUrl = "/client/video/" + @(ViewData["url"]);*@
+                            <div class="video-wrapper">
+
+                                @*<a href="#" onclick="$('#video').show(); $(this).hide();"></a>*@
+                                <div id="video">
+                                    <video style="width:100%;height:auto;" id="videoarea" controls="controls" controlslist="nodownload noplaybackrate" poster="" src=""></video>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="instructor-profile mt-30">
+                            <h3>@ViewData["tittle"]</h3>
+
+                            <p class="mb-25">@ViewData["description"]</p>
+                            <div class="star-icon mb-20">
+                                @{
+                                    int ratex = Convert.ToInt32(ViewData["rating"]);
+                                    var sisa = 5 - ratex;
+
+                                }
+
+                                @for (int ix = 0; ix < ratex; ix++)
+                                {
+                                    <i class="fas fa-star text-warning"></i>
+                                }
+                                @for (int ix = 0; ix < sisa; ix++)
+                                {
+                                    <i class="fas fa-star"></i>
+                                }
+
+                                <i>@ViewData["feedback"]</i>
+
+                                <button class="btn btn-warning btn-block mt-20 " data-bs-toggle="modal" data-bs-target="#previewcerti">
+                                    <span class="fas fa-download fa-fw"></span> Download Certificate of Participation
+                                </button>
+
+                            </div>
+                            @*<h5 class="total-stu pt-20"><span><img src="assets/img/icon/avatar-outline-badged-2.svg" alt=""> 36549+ Students</span> <span class="float-sm-end"><img src="assets/img/icon/course.svg" alt=""> 36549+ Students</span></h5>*@
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xxl-4 col-xl-5">
+                    <div class="learn-area mb-10">
+
+                        <div class="learn-box">
+                            <h5>@ViewData["totalsub_course"] Sub Course ( @ViewData["duration"] Minutes)</h5>
+                            <ul class="learn-list">
+                                @{
+                                    int i = 0;
+                                    foreach (var item in ViewData["sub_course"] as IEnumerable<OnlineCourseAPI.Model.SubCourse>)
+                                    {
+                                        <li>
+                                            @*<a href="#" onclick="$('#video').show();">
+                                                    <span class="play-video"><i class="fas fa-film"></i></span>@(i = i + 1).
+                                                    <span class="time float-end mt-2"> @item.duration Minutes</span>
+                                                    <ul id="playlist">
+                                                        @{
+                                                            var iVideoUrl = "/client/video/" + @item.url;
+                                                            <li movieurl="@iVideoUrl" moviesposter="">@item.title</li>
+                                                        }
+
+                                                    </ul>
+                                                </a>*@
+                                            <div class="row mb-0">
+                                                <div class="col-sm-1" style="cursor:pointer">
+                                                    <span class="fas fa-lock-open fa-fw"></span>
+                                                </div>
+                                                <div class="col-sm-7" style="cursor:pointer">
+                                                    @{
+                                                        var iVideoUrl = "/client/video/" + @item.url;
+                                                    }
+                                                    <a class="play-video float-start playlist-video" movieurl="@iVideoUrl" moviesposter="" id="play-preview">@(i = i + 1). @item.title</a>
+                                                </div>
+                                                <div class="col-sm-4" style="cursor:pointer">
+                                                    <span class="time float-end mt-2"> @item.duration Minutes</span>
+                                                </div>
+                                            </div>
+
+
+                                        </li>
+                                    }
+                                }
+
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xl-6 col-lg-7">
+                    <h4 class="mb-20">Review Course</h4>
+
+                    <div class="comments-area">
+                        <ul class="latest-commmnet">
+                            @{
+                                var idreview = ViewData["reviewcourseid"].ToString();
+
+                                var textBtn = "0";
+                                if (idreview == "0")
+                                {
+                                    textBtn = "Add Review";
+                                }
+                                else
+                                {
+                                    textBtn = "Update Review";
+
+                                }
+                            }
+
+                            <button type="button" class="btn btn-primary mb-10" data-bs-toggle="modal" onclick="editModal(@ViewData["reviewcourseid"])" data-bs-target="#reviewModal">
+                                <span class="fas fa-edit"></span> @textBtn
+                            </button>
+
+
+
+                            @foreach (var item in ViewData["review_course"] as IEnumerable<OnlineCourseAPI.ViewModel.ReviewCourseVM>)
+                            {
+                                <li>
+
+                                    <div class="single-comments mb-10">
+                                        <div class="comments__text">
+                                            <h6 class="sub-title18 mb-10">
+                                                @item.user_name
+                                                <span class="float-end date-text">@item.date_review;</span>
+                                            </h6>
+                                            <p>@item.review</p>
+                                            <div class="star-icon mt-10">
+                                                @{
+                                                    int ratexx = Convert.ToInt32(item.Rate);
+                                                    var sisax = 5 - ratexx;
+
+                                                }
+
+                                                @for (int ixx = 0; ixx < ratexx; ixx++)
+                                                {
+                                                    <i class="fas fa-star text-warning"></i>
+                                                }
+                                                @for (int ixx = 0; ixx < sisax; ixx++)
+                                                {
+                                                    <i class="fas fa-star"></i>
+                                                }
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+
+                            }
+
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!--course-details-area end-->
+    <!-- Modal HTML Markup -->
+    <div id="reviewModal" class="modal fade">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title">Review</h1>
+                </div>
+                <div class="modal-body">
+                    <form class="needs-validation" id="reviewform">
+                        <div hidden class="form-group">
+                            <label for="reviewId" class="form-label">ReviewId </label>
+                            <input name="reviewId" class="form-control" type="text" id="reviewId" value="" disabled>
+                        </div>
+                        <div class="form-group">
+                            @*<label for="reviewName" class="form-label">Describe your review </label>*@
+                            <textarea name="reviewName" placeholder="Write a review here ..." required class="form-control" type="text" rows="10" cols="50" id="reviewName"></textarea>
+                        </div>
+                        <div hidden class="form-group">
+                            <label for="reviewRate" class="form-label">Rate your Review </label>
+                            <input name="reviewRate" class="form-control" type="text" id="reviewRate" value="" disabled>
+                        </div>
+                        <div class="rate" required>
+                            <input type="radio" id="star5" name="rate" value="5" />
+                            <label for="star5" title="text">5 stars</label>
+                            <input type="radio" id="star4" name="rate" value="4" />
+                            <label for="star4" title="text">4 stars</label>
+                            <input type="radio" id="star3" name="rate" value="3" />
+                            <label for="star3" title="text">3 stars</label>
+                            <input type="radio" id="star2" name="rate" value="2" />
+                            <label for="star2" title="text">2 stars</label>
+                            <input type="radio" id="star1" name="rate" value="1" />
+                            <label for="star1" title="text">1 star</label>
+                        </div>
+                        <div hidden class="form-group">
+                            <label for="reviewDate" class="form-label">Review Date</label>
+                            <input name="reviewDate" class="form-control" type="text" id="reviewDate" value="" disabled>
+                        </div>
+                        <div hidden class="form-group">
+                            <label for="reviewUserid" class="form-label">Review UserId</label>
+                            <input name="reviewUserid" class="form-control" type="text" id="reviewUserid" value="" disabled>
+                        </div>
+                        <div hidden class="form-group">
+                            <label for="reviewCourseid" class="form-label">Review CourseId</label>
+                            <input name="reviewCourseid" class="form-control" type="text" id="reviewCourseid" value="" disabled>
+                        </div>
+                        <div class="col-12">
+                            <button type='button' id="btnsavereview" class="btn btn-success float-end">
+                                <span class="fas fa-save"></span> Save Review
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+</main>
+
+@section Scripts{
+    <script>
+        var reviewid = '@ViewData["reviewcourseid"]';
+        var courseid = '@ViewData["course_id"]';
+        var userid = '@ViewData["userid"]';
+    </script>
+    <script src="~/js/detailmycourses.js"></script>
+    @*<script src="~/js/detailcourse.js"></script>*@
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+}
+<!-- Modal Preview Certificate -->
+<div class="modal fade" id="previewcerti" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Preview Certificate</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="serti">
+                    <div class="main" style="MARGIN:AUTO; DISPLAY:TABLE;">
+                        <DIV CLASS="CONTAINER" style="BORDER: 20PX SOLID #ED948D; WIDTH: 750PX; HEIGHT: 563PX; DISPLAY: TABLE-CELL; VERTICAL-ALIGN: MIDDLE; TEXT-ALIGN: CENTER;">
+                            <DIV CLASS="LOGO" style=" COLOR: #ED948D; TEXT-ALIGN: CENTER;">
+                                JOANTO COURSE
+                            </DIV>
+
+                            <DIV CLASS="MARQUEE" style="COLOR: #ED948D; FONT-SIZE: 48PX; MARGIN: 20PX; TEXT-ALIGN: CENTER;">
+                                CERTIFICATE OF PARTICIPANT
+                            </DIV>
+
+                            <DIV CLASS="ASSIGNMENT" style=" MARGIN: 20PX; TEXT-ALIGN: CENTER;">
+                                THIS CERTIFICATE IS PRESENTED TO
+                            </DIV>
+
+                            <DIV CLASS="PERSON" style=" BORDER-BOTTOM: 2PX SOLID BLACK; FONT-SIZE: 32PX; FONT-STYLE: ITALIC; MARGIN: 20PX AUTO; WIDTH: 400PX; TEXT-ALIGN: CENTER;">
+                                @(ViewData["user_name"])
+                            </DIV>
+
+                            <DIV CLASS="REASON" style=" MARGIN: 20PX; TEXT-ALIGN: CENTER;">
+                                @(ViewData["tittle"])
+                            </DIV>
+                            <DIV CLASS="REASON1" style="FONT-SIZE: 16PX; TEXT-ALIGN: CENTER; ">
+                                @(DateTime.Now.ToString("dd MMMM yyyy"))
+                            </DIV>
+                        </DIV>
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-warning" id="downloadcerti"><span class="fas fa-download fa-fw"></span> Download Certificate</button>
+            </div>
+        </div>
+    </div>
+</div>

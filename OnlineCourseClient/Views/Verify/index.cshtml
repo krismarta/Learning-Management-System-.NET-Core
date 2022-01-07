@@ -1,0 +1,107 @@
+﻿@{
+    ViewData["Title"] = "Verify Your Account";
+    
+}
+
+<main>
+    <!--contact-form-area start-->
+    <section class="contact-form-area pt-50 pb-50 pt-md-100 pt-xs-50 pb-md-70 pb-xs-70">
+        <div class="container">
+            <div class="row justify-content-center align-items-center">
+                <div class="col-lg-12">
+                    <div class="card bg-light mb-3">
+                        <div class="card-body">
+                            <h2 class="text-center">Verify Your Account</h2>
+                            <p class="text-center mb-10">(Complete your data)</p>
+                            <div class="row g-0">
+
+                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                    <img class="img-fluid" src="../client/img/verify/img1.png" alt="">
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                    <div class="card-body">
+                                        <div class="contact-form-wrapper mb-30">
+                                            <form class="row gx-3 comments-form contact-form needs-validation" id="formverify" novalidate>
+
+                                                <div class="col-lg-12 mb-10">
+                                                    <div class="form-group">
+                                                        @*<label for="inputemail">Email</label>*@
+                                                        <input type="hidden" class="form-control" id="inputuserid" readonly value="@(ViewData["userid"])" required>
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="col-lg-12 mb-10">
+                                                    <div class="form-group">
+                                                        @*<label for="inputemail">Email</label>*@
+                                                        <input type="email" class="form-control" id="inputemail" readonly value="@(ViewData["email"])" placeholder="Enter your email" required>
+
+                                                        <div class="invalid-feedback">
+                                                            Email is still empty / does not match the format
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="col-12 mb-10">
+                                                    <div class="form-group">
+                                                        @*<label for="inputpassword">Password</label>*@
+                                                        <input type="number" class="form-control" id="inputnorek" name="inputnorek" placeholder="Enter your Number Account" required>
+
+                                                        <div class="invalid-feedback">
+                                                            No Account Bank is still empty / does not match the format
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12 mb-10">
+                                                    <div class="form-group">
+                                                        @*<label for="inputrepassword">Repeat Password</label>*@
+                                                        <input type="text" class="form-control" id="inputholdername" name="inputholdername" placeholder="Enter your Holder Name Bank" required>
+
+                                                        <div class="invalid-feedback">
+                                                            Holder Name is still empty / does not match the format
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-lg-12 mb-10">
+                                                    <div class="form-group">
+                                                        <select class="form-control h-100 w-100" id="inputbank" name="inputbank" required>
+                                                            <option selected value="">Select Name Bank</option>
+                                                            <option value="BBCA">Bank Central Asia </option>
+                                                            <option value="BMRI">Bank Mandiri</option>
+                                                            <option value="BBNI">Bank BNI</option>
+                                                            <option value="BBRI">Bank BRI</option>
+                                                            <option value="BNGA">Bank CIMB</option>
+                                                        </select>
+                                                        <div class="invalid-feedback">
+                                                            Name Bank is still empty / does not match the format
+                                                        </div>
+                                                    </div>
+                                                    
+                                                </div>
+
+                                            </form>
+                                            <div class="text-center">
+                                                <button id="btnverify" class="theme_btn message_btn mt-20 align-self-center btn btn-block"><span class="fas fa-thumbs-up">&nbsp;</span> Verify Account</button>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--contact-form-area end-->
+
+</main>
+
+@section Scripts{
+    <script src="~/js/verify.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+}
+

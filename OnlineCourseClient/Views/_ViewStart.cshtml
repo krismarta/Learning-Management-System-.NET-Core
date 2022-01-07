@@ -1,0 +1,20 @@
+﻿@{
+    Layout = "_Layout";
+
+    if (this.User.IsInRole("Admin"))
+    {
+        Layout = "_LayoutAdmin";
+    }
+    else if (this.User.IsInRole("UserUnverified"))
+    {
+        Layout = "_Layout";
+    }
+
+    // ....
+
+    else
+    {
+        Layout = "_Layout";
+    }
+
+}

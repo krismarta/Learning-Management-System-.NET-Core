@@ -1,0 +1,259 @@
+﻿@{
+    ViewData["Title"] = "My Profile";
+
+}
+<main>
+    <section class="contact-form-area pt-50 pb-50 pt-md-100 pt-xs-50 pb-md-70 pb-xs-70">
+        <div class="container">
+            <div class="row justify-content-center align-items-center ">
+                <div class="col-10">
+                    <div class="card bg-light mb-3">
+                        <div class="card-body">
+                            <div class="d-flex align-items-start">
+                                <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                                    <a class="nav-link active" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="true"><i class="fas fa-user fa-fw"></i> Profile</a>
+                                    <a class="nav-link" id="v-pills-bank-tab" data-bs-toggle="pill" data-bs-target="#v-pills-bank" type="button" role="tab" aria-controls="v-pills-bank" aria-selected="false"><i class="fas fa-wallet fa-fw"></i> Bank Information</a>
+                                    <a class="nav-link" id="v-pills-bankinfo-tab" data-bs-toggle="pill" data-bs-target="#v-pills-bankinfo" type="button" role="tab" aria-controls="v-pills-bankinfo" aria-selected="false"><i class="fas fa-key fa-fw"></i> Change Password</a>
+                                </div>
+                                <div class="tab-content" id="v-pills-tabContent">
+                                    @*profile form*@
+                                    <div class="tab-pane fade show active" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+                                        <div class="row">
+                                            <h5 class="message-title mb-0">Edit Profile</h5>
+                                            <p class="small">change your profile according to your identity </p>
+                                            <form class="needs-validation-user">
+                                                <div class="form-row">
+                                                    <div class="form-group has-feedback">
+                                                        <input type="hidden" id="inputid" class="form-control" placeholder="id" required aria-label="email" value="@(ViewData["userid"])" aria-describedby="basic-addon1">
+                                                        <div class="invalid-feedback">
+                                                            user id is still empty / does not match the format
+                                                        </div>
+                                                    </div>
+                                                    <div class="row mt-20">
+
+                                                        <div class="col">
+
+                                                            <div class="form-group has-feedback">
+                                                                <div class="input-group">
+                                                                    <span class="input-group-text" id="basic-addon1"><i class="fas fa-envelope"></i></span>
+                                                                    <input type="email" id="inputemail" readonly class="form-control" placeholder="email" required aria-label="email" value="@(ViewData["Email"])" aria-describedby="basic-addon1">
+                                                                </div>
+
+                                                                <div class="invalid-feedback">
+                                                                    Email is still empty / does not match the format
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col">
+                                                            <div class="form-group has-feedback">
+                                                                <div class="input-group">
+                                                                    <span class="input-group-text" id="basic-addon1"><i class="fas fa-user"></i></span>
+                                                                    <input type="text" id="inputname" class="form-control" placeholder="name" required value="@(ViewData["name"])" aria-label="name" aria-describedby="basic-addon1">
+                                                                </div>
+
+                                                                <div class="invalid-feedback">
+                                                                    Name is still empty / does not match the format
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+
+                                                    <div class="row mt-20">
+                                                        <div class="col">
+                                                            <div class="form-group has-feedback">
+                                                                <div class="input-group">
+                                                                    <span class="input-group-text" id="basic-addon1"><i class="fas fa-phone"></i></span>
+                                                                    <input type="text" id="inputphone" class="form-control" placeholder="phone" required aria-label="phone" value="@(ViewData["phone"])" aria-describedby="basic-addon1">
+                                                                </div>
+
+                                                                <div class="invalid-feedback">
+                                                                    Phone is still empty / does not match the format
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col">
+                                                            <div class="form-group has-feedback">
+                                                                <div class="input-group">
+                                                                    <span class="input-group-text" id="basic-addon1"><i class="fas fa-venus-mars"></i></span>
+                                                                    <select class="form-control" aria-describedby="basic-addon1" id="usergender" required>
+                                                                        <option value="" selected>Select your gender</option>
+                                                                        <option value="Male">Male</option>
+                                                                        <option value="Female">Famale</option>
+                                                                    </select>
+
+                                                                </div>
+
+                                                                <div class="invalid-feedback">
+                                                                    Gender is still empty / does not match the format
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col">
+                                                            <div class="form-group has-feedback">
+                                                                <div class="input-group">
+                                                                    <span class="input-group-text" id="basic-addon1"><i class="fas fa-calendar"></i></span>
+                                                                    <input type="text" id="inputBirth" class="date  form-control" placeholder="birthdate" value="" required readonly aria-label="birthdate" aria-describedby="basic-addon1">
+                                                                </div>
+                                                                <div class="invalid-feedback">
+                                                                    Birth date is still empty / does not match the format
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+                                                </div>
+                                            </form>
+                                            <button id="btnupdateuser" type="button" class="mt-20 btn btn-primary float-end"><i class="fas fa-save fa-fw"></i>Save Changes</button>
+                                            
+
+
+                                        </div>
+                                     
+
+                                    </div>
+
+                                    <div class="tab-pane fade" id="v-pills-bank" role="tabpanel" aria-labelledby="v-pills-bank-tab">
+                                        <div class="row">
+                                            <h5 class="message-title mb-0">Edit Bank Information</h5>
+                                            <p class="small">change the bank information on your account</p>
+                                            <form class="needs-validation-bank" novalidate>
+                                                <div class="form-row">
+                                                    <input type="hidden" class="form-control" value="@(ViewData["idrek"])" id="idrek" name="idrek">
+                                                    <div class="row mt-20">
+                                                        <div class="col">
+
+                                                            <div class="form-group has-feedback">
+                                                                <div class="input-group">
+                                                                    <span class="input-group-text" id="basic-addon1"><i class="fas fa-credit-card"></i></span>
+                                                                    <input type="text" class="form-control" value="@(ViewData["no_rekening"])" id="inputnorek" name="inputnorek" placeholder="Enter your Number Account" aria-label="inputrek" aria-describedby="basic-addon1">
+                                                                </div>
+
+                                                                <div class="invalid-feedback">
+                                                                    No Account Bank is still empty / does not match the format
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col">
+                                                            <div class="form-group has-feedback">
+                                                                <div class="input-group">
+                                                                    <span class="input-group-text" id="basic-addon1"><i class="fas fa-university"></i></span>
+                                                                    <select class=" form-control" id="inputbank" name="inputbank" required>
+                                                                        <option selected value="">Select Name Bank</option>
+                                                                        <option value="BBCA">Bank Central Asia </option>
+                                                                        <option value="BMRI">Bank Mandiri</option>
+                                                                        <option value="BBNI">Bank BNI</option>
+                                                                        <option value="BBRI">Bank BRI</option>
+                                                                        <option value="BNGA">Bank CIMB</option>
+                                                                    </select>
+
+                                                                </div>
+
+                                                                <div class="invalid-feedback">
+                                                                    Name Bank is still empty / does not match the format
+
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+
+                                                        <div class="col">
+                                                            <div class="form-group has-feedback">
+                                                                <div class="input-group">
+                                                                    <span class="input-group-text" id="basic-addon1"><i class="fas fa-address-card"></i></span>
+                                                                    <input type="text" class="form-control" value="@(ViewData["name_rekening"])" id="inputholdername" name="inputholdername" placeholder="Enter your Holder Name Bank" required aria-label="phone" aria-describedby="basic-addon1">
+                                                                </div>
+                                                                <div class="invalid-feedback">
+                                                                    Holder Name is still empty / does not match the format
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    
+                                                </div>
+
+                                            </form>
+                                            <button type="button" id="btnsavebank" class="mt-20 btn btn-primary float-end"><i class="fas fa-save fa-fw"></i>Save Changes</button>
+                                            
+
+                                        </div>
+
+                                    </div>
+
+                                    <div class="tab-pane fade" id="v-pills-bankinfo" role="tabpanel" aria-labelledby="v-pills-bankinfo-tab">
+                                        <div class="row">
+                                            <h5 class="message-title mb-0">Edit Password</h5>
+                                            <p class="small">change the password on your account</p>
+                                            <form class="needs-validation-change">
+                                                <div class="form-row">
+                                                    <div class="row mt-20">
+
+                                                        <div class="col">
+                                                            <div class="form-group has-feedback">
+                                                                <div class="input-group">
+                                                                    <span class="input-group-text" id="basic-addon1"><i class="fas fa-key"></i></span>
+                                                                    <input type="password" class="form-control" id="newpass" placeholder="New passowrd" aria-label="newpassword" required aria-describedby="basic-addon1">
+                                                                </div>
+
+                                                                <div class="invalid-feedback">
+                                                                    New Pawssword is still empty / does not match the format
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col">
+                                                            <div class="form-group has-feedback">
+                                                                <div class="input-group">
+                                                                    <span class="input-group-text" id="basic-addon1"><i class="fas fa-user"></i></span>
+                                                                    <input type="password" class="form-control" id="repass" placeholder="Repeat new password" aria-label="repassword" required aria-describedby="basic-addon1">
+                                                                </div>
+
+                                                                <div class="invalid-feedback">
+                                                                    Repeat new password is still empty / does not match the format
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+
+                                                </div>
+
+                                            </form>
+                                            <div class="row align-items-center">
+                                                <div class="col">
+                                                    <button type="button" id="btnsavepass" class="mt-20 btn btn-primary"><i class="fas fa-save fa-fw"></i>Save Changes</button>
+                                                </div>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <!--contact-form-area end-->
+
+</main>
+@section Scripts{
+    <script type="text/javascript">
+        var name_bank = '@ViewData["name_bank"]';
+        var user_gender = '@ViewData["gender"]';
+        var user_birthdate =  '@ViewData["birthdate"]';
+        
+    </script>
+    <!-- Bootstrap Date-Picker Plugin -->
+    
+    <script src="~/js/profile.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+}
+

@@ -1,0 +1,129 @@
+﻿@{
+    ViewData["Title"] = "Login";
+
+}
+
+<main>
+
+    <section class="contact-form-area pt-50 pb-50 pt-md-100 pt-xs-50 pb-md-70 pb-xs-70">
+        <div class="container">
+            <div class="row justify-content-center align-items-center">
+                <div class="col-lg-8">
+                    <div class="card bg-light mb-3">
+                        <div class="card-body">
+                            <h2 class="text-center">Login</h2>
+                            <p class="text-center mb-10">(Please login using your account)</p>
+                            <div class="row g-0">
+                                <div class="col-6">
+                                    <img class="img-fluid" src="client/img/login/single_login.png" alt="">
+                                </div>
+                                <div class="col-6">
+                                    <div class="card-body">
+                                        <div class="contact-form-wrapper mb-30">
+                                            <form method="post" id="formlogin" class="row gx-3 comments-form contact-form needs-validation" novalidate>
+                                                @*<form class="needs-validation" novalidate onsubmit="return false" action="/Auth" method="post" id="asd">*@
+                                                <div class="group mb-20">
+                                                    @*<label for="user" class="label">Email</label>*@
+                                                    <input name="email" id="email" type="email" class="input" placeholder="Enter your email" required>
+                                                    <div class="invalid-feedback">
+                                                        Email is still empty / does not match the format
+                                                    </div>
+                                                </div>
+                                                <div class="group">
+                                                    @*<label for="pass" class="label">Password</label>*@
+                                                    <input name="password" id="password" placeholder="Enter your password" type="password" class="input" data-type="password" required>
+                                                    <div class="invalid-feedback">
+                                                        Password is still empty / does not match the format
+                                                    </div>
+                                                </div>
+                                                @*<div class="group">
+                                                    <input type="submit" class="text-white theme_btn message_btn mt-20" value="Sign In">
+                                                </div>*@
+                                            </form>
+                                            <div class="text-center">
+                                                <button id="btnloginCustomer" class="theme_btn message_btn mt-20 align-self-center btn btn-block"><span class="fas fa-sign">&nbsp;</span> Sign in</button>
+                                            </div>
+                                            <div class="text-end mb-30">
+                                                <a class="small " href="#" data-toggle="modal" data-target="#exampleModal">Forgot Password?</a>
+                                            </div>
+
+                                            <div class="mt-20 text-center">
+                                                Create an Account ? <strong><a class="small" href="@Url.Action( "index","Register")">New Account</a></strong>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--contact-form-area end-->
+    <!-- Modal -->
+    <div class="modal fade"  id="exampleModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Forgot Password</h5>
+                    @*<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>*@
+
+                </div>
+                <div class="modal-body">
+                    <p class="mb-20">We will send the password via email registered in our system</p>
+                    <form class="needs-validation row gx-3 comments-form contact-form" novalidate onsubmit="return false"  method="post" id="asd">
+                        <div class="group mb-20">
+                            @*<label for="user" class="label">Email</label>*@
+                            <input name="email" id="inputemail" type="text" class="input" placeholder="Enter your email" required>
+                            <div class="invalid-feedback">
+                                Please enter email.
+                            </div>
+                        </div>
+                        <div class="group">
+                            <input type="submit" class="btn btn-primary text-white " value="CHANGE PASSWORD" onclick="Forgot()" >
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                   
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</main>
+
+<script>
+
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+    (function () {
+        'use strict'
+
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.querySelectorAll('.needs-validation')
+
+        // Loop over them and prevent submission
+        Array.prototype.slice.call(forms)
+            .forEach(function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    }
+
+                    form.classList.add('was-validated')
+                }, false)
+            })
+    })()
+
+</script>
+
+
+@section Scripts{
+    <script src="~/js/login.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+}
+
+

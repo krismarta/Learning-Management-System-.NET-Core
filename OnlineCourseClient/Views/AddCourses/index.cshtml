@@ -1,0 +1,378 @@
+﻿@{
+    ViewData["Title"] = "AddCourse";
+}
+
+<div class="container">
+
+    <div class="text-center">
+        <h1 class="display-4">Add Courses</h1>
+    </div>
+
+    <button type="button" class="fas fa-user-plus" data-bs-toggle="modal" onclick="Insert" data-bs-target="#createCourses">
+    </button>
+
+    <table id="courses" class="table table-hover" style="color:black">
+        <thead>
+            <tr style="color:red;">
+                <th scope="col">ID</th>
+                <th scope="col">Title</th>
+                <th scope="col">Description</th>
+                <th scope="col">Price</th>
+                <th scope="col">Thumbnail</th>
+                <th scope="col">Details</th>
+                <th scope="col">Update</th>
+                <th scope="col">Delete</th>
+            </tr>
+        </thead>
+        <tbody id="listSW">
+        </tbody>
+    </table>
+
+</div>
+
+@*MODAL DETAIL COURSE*@
+<!-- Modal -->
+<div class="modal fade" id="detailCourseModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Course Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal HTML Markup -->
+<div id="createCourses" class="modal fade">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title">Create New Course</h1>
+            </div>
+            <div class="modal-body">
+                <form class="needs-validation" novalidate id="courseform" onsubmit="return false">
+                    <div class="form-group">
+                        <label for="courseTitle" class="form-label"> Course Title </label>
+                        <input name="courseTitle" class="form-control" required type="text" id="courseTitle" value="">
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="courseDescription" class="form-label"> Course Description </label>
+                        <input name="courseDescription" class="form-control" required type="text" id="courseDescription" value="">
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="coursePrice" class="form-label"> Course Price </label>
+                        <input name="coursePrice" class="form-control" required type="text" id="coursePrice" value="">
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="courseThumbnail" class="form-label"> Course Thumbnail </label>
+                        <input name="courseThumbnail" class="form-control" required type="text" id="courseThumbnail" value="">
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="courseName" class="form-label"> Course Name </label>
+                        <input name="courseName" class="form-control" required type="text" id="courseName" value="">
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="courseCategoryid" class="form-label"> Course Category </label>
+                        <input name="courseCategoryid" class="form-control" required type="text" id="courseCategoryid" value="">
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="courseUserid" class="form-label"> Course Uploader </label>
+                        <input name="courseUserid" class="form-control" required type="text" id="courseUserid" value="">
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <button type='submit' class="fas fa-save" onclick="InsertCourse()">
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+<div id="editCourseModal" class="modal fade">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title">Edit Course</h1>
+            </div>
+            <div class="modal-body">
+                <form class="needs-validation" novalidate id="editcourseform" onsubmit="return false">
+
+                    <div class="form-group">
+                        <label for="editCourseID" class="form-label">ID</label>
+                        <input type="text" class="form-control" id="editCourseID" value="" disabled>
+                    </div>
+                    <div class="form-group">
+                        <label for="courseTitle" class="form-label"> Course Title </label>
+                        <input name="courseTitle" class="form-control" required type="text" id="editCourseTitle" value="">
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="courseDescription" class="form-label"> Course Description </label>
+                        <input name="courseDescription" class="form-control" required type="text" id="editCourseDescription" value="">
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="coursePrice" class="form-label"> Course Price </label>
+                        <input name="coursePrice" class="form-control" required type="text" id="editCoursePrice" value="">
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="courseThumbnail" class="form-label"> Course Thumbnail </label>
+                        <input name="courseThumbnail" class="form-control" required type="text" id="editCourseThumbnail" value="">
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="courseCategoryid" class="form-label"> Course Category </label>
+                        <input name="courseCategoryid" class="form-control" required type="text" id="editCourseCategoryid" value="">
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="courseUserid" class="form-label"> Course Uploader </label>
+                        <input name="courseUserid" class="form-control" required type="text" id="editCourseUserid" value="">
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        @*<button type='submit' class="fas fa-save" onclick="Update(employeeNik.value)">*@
+                        <button type='submit' class="fas fa-save" onclick="UpdateCourse(editCourseID.value)">
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+<div id="createEmployeeModal2" class="modal fade">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title">Edit Employees</h1>
+            </div>
+            <div class="modal-body">
+                <form class="needs-validation" novalidate id="employeeform" onsubmit="return false">
+                    @*<form class="cmxform" id="employeeform" method="get" action="form-handler.html">*@
+                    <div class="form-group">
+                        <label for="employeeNik" class="form-label">NIK</label>
+                        <input type="text" class="form-control" id="employeeNik" value="" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="employeeFirstName" class="form-label">First name </label>
+                        <input name="employeeFirstName" class="form-control" required type="text" id="employeeFirstName" value="">
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="employeeLastName" class="form-label">Last name</label>
+                        <input name="employeeLastName" type="text" class="form-control" id="employeeLastName" value="" required />
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="validationCustomUsername" class="form-label">Email</label>
+                        <div class="input-group has-validation">
+                            <input type="email" class="form-control" id="employeeEmail" value="" required>
+                            <div class="invalid-feedback">
+                                Please enter email.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="validationCustomUsername" class="form-label">Phone</label>
+                        <div class="input-group has-validation">
+                            <input type="text" class="form-control" id="employeePhone" value="" required>
+                            <div class="invalid-feedback">
+                                Please enter phone number.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="validationCustom03" class="form-label">BirthDate</label>
+                        <input type="date" class="form-control" id="employeeBirthDate" value="" required>
+                        <div class="invalid-feedback">
+                            Please enter BirthDate
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="validationCustom04" class="form-label">Gender</label>
+                        <select class="form-select" id="employeeGender" value="" required>
+                            <option selected disabled value="">Choose...</option>
+                            <option value="0"> Male </option>
+                            <option value="1"> Female </option>
+                        </select>
+                        <div class="invalid-feedback">
+                            Please select a valid Gender.
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="validationCustom05" class="form-label">Salary</label>
+                        <input type="text" class="form-control" id="employeeSalary" value="" required>
+                        <div class="invalid-feedback">
+                            Please enter Salary
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <button type='submit' class="fas fa-save" onclick="Insert()">
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<!-- Modal HTML Markup -->
+<div id="editEmployeeModal2" class="modal fade">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title">Edit Employees</h1>
+            </div>
+            <div class="modal-body">
+                <form class="needs-validation" novalidate id="employeeform" onsubmit="return false">
+                    @*<form class="cmxform" id="employeeform" method="get" action="form-handler.html">*@
+                    <div class="form-group">
+                        <label for="employeeNik" class="form-label">NIK</label>
+                        <input type="text" class="form-control" id="employeeNik" value="" disabled>
+                    </div>
+                    <div class="form-group">
+                        <label for="employeeFirstName" class="form-label">First name </label>
+                        <input name="employeeFirstName" class="form-control" required type="text" id="employeeFirstName" value="">
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="employeeLastName" class="form-label">Last name</label>
+                        <input name="employeeLastName" type="text" class="form-control" id="employeeLastName" value="" required />
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="validationCustomUsername" class="form-label">Email</label>
+                        <div class="input-group has-validation">
+                            <input type="email" class="form-control" id="employeeEmail" value="" required>
+                            <div class="invalid-feedback">
+                                Please enter email.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="validationCustomUsername" class="form-label">Phone</label>
+                        <div class="input-group has-validation">
+                            <input type="text" class="form-control" id="employeePhone" value="" required>
+                            <div class="invalid-feedback">
+                                Please enter phone number.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="validationCustom03" class="form-label">BirthDate</label>
+                        <input type="date" class="form-control" id="employeeBirthDate" value="" required>
+                        <div class="invalid-feedback">
+                            Please enter BirthDate
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="validationCustom04" class="form-label">Gender</label>
+                        <select class="form-select" id="employeeGender" value="" required>
+                            <option selected disabled value="">Choose...</option>
+                            <option value="0"> Male </option>
+                            <option value="1"> Female </option>
+                        </select>
+                        <div class="invalid-feedback">
+                            Please select a valid Gender.
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="validationCustom05" class="form-label">Salary</label>
+                        <input type="text" class="form-control" id="employeeSalary" value="" required>
+                        <div class="invalid-feedback">
+                            Please enter Salary
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <button type='submit' class="fas fa-save" onclick="Update(employeeNik.value)">
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<script>
+
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+    (function () {
+        'use strict'
+
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.querySelectorAll('.needs-validation')
+
+        // Loop over them and prevent submission
+        Array.prototype.slice.call(forms)
+            .forEach(function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    }
+
+                    form.classList.add('was-validated')
+                }, false)
+            })
+    })()
+
+</script>
+
+@section Scripts{
+    <script src="~/js/courses.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+}
+

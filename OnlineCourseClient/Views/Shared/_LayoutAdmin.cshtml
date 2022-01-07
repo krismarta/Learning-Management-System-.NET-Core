@@ -1,0 +1,356 @@
+﻿
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>@ViewData["Title"] - Joanto Course</title>
+    <meta name="keywords" content="online education, e-learning, coaching, education, teaching, learning">
+    <meta name="description" content="Joanto course is a e-learning from zero to hero ">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="shortcut icon" type="image/x-icon" href="~/client/img/favicon.png">
+    <!-- Place favicon.ico in the root directory -->
+    <!-- CSS here -->
+
+    <link rel="stylesheet" href="~/client/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/client/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/client/css/animate.css">
+    <link rel="stylesheet" href="~/client/css/magnific-popup.css">
+    <link rel="stylesheet" href="~/client/css/all.min.css">
+    <link rel="stylesheet" href="~/client/css/flaticon.css">
+    <link rel="stylesheet" href="~/client/css/font.css">
+    <link rel="stylesheet" href="~/client/css/metisMenu.css">
+    <link rel="stylesheet" href="~/client/css/nice-select.css">
+    <link rel="stylesheet" href="~/client/css/slick.css">
+    <link rel="stylesheet" href="~/client/css/spacing.css">
+    <link rel="stylesheet" href="~/client/css/main.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/jquery.bootstrapvalidator/0.5.2/css/bootstrapValidator.min.css" />
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.css">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="~/lib/jquery-validation/dist/jquery.validate.min.js" defer></script>
+
+    <!-- Custom fonts for this template-->
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+          rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="~/admin/sb-admin-2.css" rel="stylesheet">
+
+    <style>
+        #accordionSidebar {
+            height: 100%;
+            width: 160px;
+            position: fixed;
+            z-index: 101;
+            top: 0;
+            left: 0;
+        }
+
+        #main {
+            margin-left: 200px;
+        }
+
+        #navbarTopbar {
+         
+            top: 0;
+            width: 100%;
+            z-index: 100;
+           
+        }
+    </style>
+
+</head>
+
+<body >
+    <!--[if lte IE 9]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+        <![endif]-->
+    <!-- Add your site or application content here -->
+    <!-- preloader -->
+    <div id="preloader">
+        <div class="preloader">
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+    <!-- preloader end  -->
+
+
+        <!-- Page Wrapper -->
+        < id="wrapper">
+
+            <!-- Sidebar -->
+    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+        <!-- Sidebar - Brand -->
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <div class="sidebar-brand-icon rotate-n-15">
+                <i class="fas fa-user-cog"></i>
+            </div>
+            <div class="sidebar-brand-text mx-3">JOANTO COURSE ADMIN <sup></sup></div>
+        </a>
+
+        <!-- Divider -->
+        <hr class="sidebar-divider my-0">
+
+        <!-- Nav Item - Dashboard -->
+        <li class="nav-item active">
+            <a class="nav-link" href="index.html">
+                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <span>Dashboard</span>
+            </a>
+        </li>
+
+        <!-- Divider -->
+        <hr class="sidebar-divider">
+
+        <!-- Heading -->
+        <div class="sidebar-heading">
+            ADMIN MENU
+        </div>
+
+        <!-- Nav Item - Pages Collapse Menu -->
+        <li class="nav-item">
+            <a class="nav-link custom-caret" href="@Url.Action("Index", "AddCategory")" role="button" aria-expanded="false">
+                <i class="fas fa-fw fa-book-reader"></i>
+                <span>Add Category</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link custom-caret" href="@Url.Action("Index", "AddCourses")" role="button" aria-expanded="false">
+                <i class="fas fa-fw fa-book-reader"></i>
+                <span>Add Courses</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="tables.html">
+                <i class="fas fa-fw fa-shopping-cart"></i>
+                <span>Confirm Payment</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="tables.html">
+                <i class="fas fa-fw fa-question-circle"></i>
+                <span>Add FAQ</span>
+            </a>
+        </li>
+
+
+        <!-- Divider -->
+        <hr class="sidebar-divider d-none d-md-block">
+
+
+
+
+
+    </ul>
+            <!-- End of Sidebar -->
+            <!-- Content Wrapper -->
+            <div id="content-wrapper" class="d-flex flex-column">
+
+                <!-- Main Content -->
+                <div id="content">
+
+                    <!-- Topbar -->
+                    <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 sticky-top shadow" id="navbarTopbar">
+
+                        <!-- Sidebar Toggle (Topbar) -->
+                        <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                            <i class="fa fa-bars"></i>
+                        </button>
+
+
+                        <!-- Topbar Navbar -->
+                        <ul class="navbar-nav ml-auto">
+
+                            <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+                            <li class="nav-item dropdown no-arrow d-sm-none">
+                                <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
+                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fas fa-search fa-fw"></i>
+                                </a>
+                                <!-- Dropdown - Messages -->
+                                <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
+                                     aria-labelledby="searchDropdown">
+                                    <form class="form-inline mr-auto w-100 navbar-search">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control bg-light border-0 small"
+                                                   placeholder="Search for..." aria-label="Search"
+                                                   aria-describedby="basic-addon2">
+                                            <div class="input-group-append">
+                                                <button class="btn btn-primary" type="button">
+                                                    <i class="fas fa-search fa-sm"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </li>
+
+                            <!-- Nav Item - Alerts -->
+                            <!--<li class="nav-item dropdown no-arrow mx-1">
+                <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
+                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-bell fa-fw"></i>-->
+                            <!-- Counter - Alerts -->
+                            <!--<span class="badge badge-danger badge-counter">3+</span>
+            </a>-->
+                            <!-- Dropdown - Alerts -->
+                            <!--<div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                     aria-labelledby="alertsDropdown">
+                    <h6 class="dropdown-header">
+                        Alerts Center
+                    </h6>
+                    <a class="dropdown-item d-flex align-items-center" href="#">
+                        <div class="mr-3">
+                            <div class="icon-circle bg-primary">
+                                <i class="fas fa-file-alt text-white"></i>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="small text-gray-500">December 12, 2019</div>
+                            <span class="font-weight-bold">A new monthly report is ready to download!</span>
+                        </div>
+                    </a>
+                    <a class="dropdown-item d-flex align-items-center" href="#">
+                        <div class="mr-3">
+                            <div class="icon-circle bg-success">
+                                <i class="fas fa-donate text-white"></i>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="small text-gray-500">December 7, 2019</div>
+                            $290.29 has been deposited into your account!
+                        </div>
+                    </a>
+                    <a class="dropdown-item d-flex align-items-center" href="#">
+                        <div class="mr-3">
+                            <div class="icon-circle bg-warning">
+                                <i class="fas fa-exclamation-triangle text-white"></i>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="small text-gray-500">December 2, 2019</div>
+                            Spending Alert: We've noticed unusually high spending for your account.
+                        </div>
+                    </a>
+                    <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
+                </div>
+            </li>-->
+                            <!-- Nav Item - Messages -->
+                            <!--<li class="nav-item dropdown no-arrow mx-1">
+                <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
+                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-envelope fa-fw"></i>-->
+                            <!-- Counter - Messages -->
+                            <!--<span class="badge badge-danger badge-counter">7</span>
+                </a>
+
+            </li>
+
+            <div class="topbar-divider d-none d-sm-block"></div>-->
+                            <!-- Nav Item - User Information -->
+                            <li class="nav-item dropdown no-arrow">
+                                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <span class="mr-2 d-none d-lg-inline text-gray-600 small">Admin Information</span>
+
+
+
+                                </a>
+                                <!-- Dropdown - User Information -->
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="javascript:void();"></a></li>
+                                    <li><a class="dropdown-item" href="@Url.Action("Index", "Login")">Login</a></li>
+                                    <li><a class="dropdown-item" href="@Url.Action("Index", "Register")">Register</a></li>
+                                    
+                                </ul>
+                                @*<div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                         aria-labelledby="userDropdown">
+                        <a class="dropdown-item" href="#">
+                            <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                            Profile
+                        </a>
+                        <a class="dropdown-item" href="#">
+                            <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                            Settings
+                        </a>
+                        <a class="dropdown-item" href="#">
+                            <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+                            Activity Log
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                            <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                            Logout
+                        </a>
+                    </div>*@
+                            </li>
+
+                        </ul>
+
+                    </nav>
+                    <!-- End of Topbar -->
+                    <!-- Begin Page Content -->
+
+                    <div class="container-fluid">
+                        <main id="main">
+                            @RenderBody()
+                        </main>
+                    </div>
+                  
+
+                    <!--footer-area end-->
+                    <!-- JS here -->
+                    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+                    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+                    <script src="https://kit.fontawesome.com/9180653312.js" crossorigin="anonymous"></script>
+                    <script src="~/client/js/vendor/modernizr-3.5.0.min.js"></script>
+                    <script src="~/client/js/vendor/jquery-2.2.4.min.js"></script>
+
+                    <script src="~/client/js/popper.min.js"></script>
+                    <script src="~/client/js/bootstrap.min.js"></script>
+                    <script src="~/client/js/owl.carousel.min.js"></script>
+                    <script src="~/client/js/isotope.pkgd.min.js"></script>
+                    <script src="~/client/js/slick.min.js"></script>
+                    <script src="~/client/js/metisMenu.min.js"></script>
+                    <script src="~/client/js/jquery.nice-select.js"></script>
+                    <script src="~/client/js/ajax-form.js"></script>
+                    <script src="~/client/js/wow.min.js"></script>
+                    <script src="~/client/js/jquery.counterup.min.js"></script>
+                    <script src="~/client/js/waypoints.min.js"></script>
+                    <script src="~/client/js/jquery.scrollUp.min.js"></script>
+                    <script src="~/client/js/imagesloaded.pkgd.min.js"></script>
+                    <script src="~/client/js/jquery.magnific-popup.min.js"></script>
+
+               
+                    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
+                    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/2.1.0/js/dataTables.buttons.min.js"></script>
+                    <script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+                    <script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+                    <script type="text/javascript" charset="utf8" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+                    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/2.1.0/js/buttons.html5.min.js"></script>
+                    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/2.1.0/js/buttons.print.min.js"></script>
+                    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
+                    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+
+
+
+                    @await RenderSectionAsync("Scripts", required: false)
+                    <script src="~/js/site.js" asp-append-version="true"></script>
+                    <script src="~/client/js/jquery.easypiechart.js"></script>
+                    <script src="~/client/js/plugins.js"></script>
+                    <script src="~/client/js/main.js"></script>
+                    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+                    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.bootstrapvalidator/0.5.2/js/bootstrapValidator.min.js"></script>
+
+
+
+</body>
+
+</html>

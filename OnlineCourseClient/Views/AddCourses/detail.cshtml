@@ -1,0 +1,117 @@
+﻿@{
+    ViewData["Title"] = "Detail";
+}
+
+<div class="container">
+
+    <div class="text-center">
+        <h1 class="display-4">Add SubCourses</h1>
+    </div>
+
+    <button type="button" class="fas fa-user-plus" data-bs-toggle="modal" onclick="Insert" data-bs-target="#createCourses">
+    </button>
+
+    <table id="courses" value="1" class="table table-hover" style="color:black">
+        <thead>
+            <tr style="color:red;">
+                <th scope="col">ID</th>
+                <th scope="col">Title</th>
+                <th scope="col">Description</th>
+                <th scope="col">Url</th>
+                <th scope="col">Duration</th>
+                <th scope="col">Update</th>
+                <th scope="col">Delete</th>
+            </tr>
+        </thead>
+        <tbody id="listSW">
+        </tbody>
+    </table>
+
+</div>
+
+<!-- Modal HTML Markup -->
+<div id="createCourses" class="modal fade">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title">Create New SubCourse</h1>
+            </div>
+            <div class="modal-body">
+                <form class="needs-validation" novalidate id="courseform" onsubmit="return false">
+                    <div class="form-group">
+                        <label for="courseTitle" class="form-label"> Course Title </label>
+                        <input name="courseTitle" class="form-control" required type="text" id="courseTitle" value="">
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="courseDescription" class="form-label"> Course Description </label>
+                        <input name="courseDescription" class="form-control" required type="text" id="courseDescription" value="">
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="courseUrl" class="form-label"> Course Url </label>
+                        <input name="courseUrl" class="form-control" required type="text" id="courseUrl" value="">
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="courseDuration" class="form-label"> Course Duration </label>
+                        <input name="courseDuration" class="form-control" required type="text" id="courseDuration" value="">
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="courseCourseid" class="form-label"> Course Courseid </label>
+                        <input name="courseCourseid" class="form-control" required type="text" id="courseCourseid" value="">
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <button type='submit' class="fas fa-save" onclick="InsertCourse()">
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+
+<script>
+
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+    (function () {
+        'use strict'
+
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.querySelectorAll('.needs-validation')
+
+        // Loop over them and prevent submission
+        Array.prototype.slice.call(forms)
+            .forEach(function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (!form.checkValidity()) {
+                        event.preventDefault()
+                        event.stopPropagation()
+                    }
+
+                    form.classList.add('was-validated')
+                }, false)
+            })
+    })()
+
+</script>
+
+@section Scripts{
+    <script src="~/js/subcourses.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+}
+
